@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeapToOSC", "LeapToOSC.csproj", "{C935615B-4463-4DB5-7D28-88ECEB59F66E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeapToOSC.Editor", "LeapToOSC.Editor.csproj", "{74330F9E-8779-71FC-CEC4-9C13598BEED5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C935615B-4463-4DB5-7D28-88ECEB59F66E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C935615B-4463-4DB5-7D28-88ECEB59F66E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C935615B-4463-4DB5-7D28-88ECEB59F66E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C935615B-4463-4DB5-7D28-88ECEB59F66E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74330F9E-8779-71FC-CEC4-9C13598BEED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74330F9E-8779-71FC-CEC4-9C13598BEED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74330F9E-8779-71FC-CEC4-9C13598BEED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74330F9E-8779-71FC-CEC4-9C13598BEED5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
