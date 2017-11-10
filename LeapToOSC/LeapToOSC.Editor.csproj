@@ -277,50 +277,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Editor\OSCHelper.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Editor\CorePreferences.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Editor\CustomEditorBase.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Editor\CustomPropertyDrawerBase.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Editor\EmptyFolderUtility.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Editor\LeapHandControllerEditor.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Editor\LeapImageRetrieverEditor.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Editor\LeapServiceProviderEditor.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Editor\Tests\FrameValidator.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Editor\Tests\HandFactoryTest.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Editor\Tests\TransformCopyTest.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\Algorithms\Editor\Tests\SlidingMaxTest.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\Animation\Editor\TransformTweenBehaviourEditor.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\Animation\Tween\Editor\Tests\TweenTests.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\Attachments\Editor\AttachmentHandsEditor.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\Attributes\Editor\CombinablePropertyDrawer.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\DataStructures\Editor\AssetFolderPropertyDrawer.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\DataStructures\Editor\SerializableDictionaryEditor.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\DataStructures\Editor\SerializableHashSetEditor.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\DataStructures\Editor\StreamingAssetPropertyDrawer.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\DataStructures\Editor\StreamingFolderPropertyDrawer.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\DataStructures\Editor\Tests\DequeTests.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\DataStructures\Editor\Tests\MinHeapTest.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\DataStructures\Editor\Tests\MultiTypedListTests.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\DataStructures\Editor\Tests\MultiTypedReferenceTests.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\DataStructures\Editor\Tests\ProduceConsumeBufferTest.cs" />
     <Compile Include="Assets\LeapMotion\Core\Scripts\Query\Editor\ListAndArrayExtensionTests.cs" />
     <Compile Include="Assets\LeapMotion\Core\Scripts\Query\Editor\QueryTests.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\Utils\Editor\CommentEditor.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\Utils\Editor\EnumEventTableEditor.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\Utils\Editor\Hotkeys.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\Utils\Editor\SingleLayerEditor.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\Utils\Editor\TransformUtilTests.cs" />
     <Compile Include="Assets\LeapMotion\Core\Scripts\VR\Editor\EyeTypeEditor.cs" />
-    <Compile Include="Assets\LeapMotion\Core\Scripts\VR\Editor\LeapTemporalWarpingEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LeapMotion\Core\Dependencies.txt" />
     <None Include="Assets\LeapMotion\Core\README_BEFORE_UPDATING.txt" />
-    <None Include="Assets\LeapMotion\Core\Resources\LeapCG.cginc" />
-    <None Include="Assets\LeapMotion\Core\Resources\PassthroughBackground.shader" />
-    <None Include="Assets\LeapMotion\Core\Resources\PassthroughForeground.shader" />
-    <None Include="Assets\LeapMotion\Core\Resources\RuntimeGizmos.shader" />
-    <None Include="Assets\LeapMotion\Core\Resources\ThresholdOverlay.shader" />
-    <None Include="Assets\LeapMotion\Core\Resources\VertexOffsetShader.shader" />
     <None Include="Assets\LeapMotion\Core\Version.txt" />
     <None Include="Assets\LeapMotion\Core\readme.txt" />
   </ItemGroup>
