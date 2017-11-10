@@ -1,4 +1,4 @@
-#N canvas 1109 105 285 136 10;
+#N canvas 1109 105 287 142 10;
 #X msg 5 6 listen 8765;
 #X obj 5 31 netreceive -u -b;
 #X obj 5 56 oscparse;

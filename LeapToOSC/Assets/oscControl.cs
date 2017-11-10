@@ -20,16 +20,15 @@
 //
 
 using UnityEngine;
-using System;
+//using System;
 using System.Net;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+//using System.Collections;
+//using System.Collections.Generic;
+//using System.Text;
 using UnityOSC;
 
 namespace Leap.Unity
 {
-
     public class oscControl : MonoBehaviour
     {
 
@@ -44,7 +43,6 @@ namespace Leap.Unity
         // Script initialization
         void Start()
         {
-
             // init OSC
             OSCHandler.Instance.Init();
 
@@ -52,48 +50,42 @@ namespace Leap.Unity
             OSCHandler.Instance.CreateClient("myClient", IPAddress.Parse(outIP), outPort);
 
             // Initialize OSC servers (listeners)
-            myServer = OSCHandler.Instance.CreateServer("myServer", inPort);
+            //myServer = OSCHandler.Instance.CreateServer("myServer", inPort);
             // Set buffer size (bytes) of the server (default 1024)
-            myServer.ReceiveBufferSize = 1024;
+            //myServer.ReceiveBufferSize = 1024;
             // Set the sleeping time of the thread (default 10)
-            myServer.SleepMilliseconds = 10;
+            //myServer.SleepMilliseconds = 10;
 
         }
 
         // Reads all the messages received between the previous update and this one
-        void Update()
+        void Update() // Empty, (commented) OSC Message Reader
         {
 
             // Read received messages
-            for (var i = 0; i < OSCHandler.Instance.packets.Count; i++)
-            {
-                // Process OSC
-                receivedOSC(OSCHandler.Instance.packets[i]);
-                // Remove them once they have been read.
-                OSCHandler.Instance.packets.Remove(OSCHandler.Instance.packets[i]);
-                i--;
-            }
+            //for (var i = 0; i < OSCHandler.Instance.packets.Count; i++)
+            //{
+            //    // Process OSC
+            //    receivedOSC(OSCHandler.Instance.packets[i]);
+            //    // Remove them once they have been read.
+            //    OSCHandler.Instance.packets.Remove(OSCHandler.Instance.packets[i]);
+            //    i--;
+            //}
 
         }
 
-
-
-        // Process OSC message
-        private void receivedOSC(OSCPacket pckt)
-        {
-            if (pckt == null) { Debug.Log("Empty packet"); return; }
-
-            // Origin
-            int serverPort = pckt.server.ServerPort;
-
-            // Address
-            string address = pckt.Address.Substring(1);
-
-            // Data at index 0
-            string data0 = pckt.Data.Count != 0 ? pckt.Data[0].ToString() : "null";
-
-            // Print out messages
-            Debug.Log("Input port: " + serverPort.ToString() + "\nAddress: " + address + "\nData [0]: " + data0);
-        }
+        // Process incoming OSC messages (Commented)
+        //private void receivedOSC(OSCPacket pckt)
+        //{
+        //    if (pckt == null) { Debug.Log("Empty packet"); return;
+        //    // Origin
+        //    int serverPort = pckt.server.ServerPort;
+        //    // Address
+        //    string address = pckt.Address.Substring(1);
+        //    // Data at index 0
+        //    string data0 = pckt.Data.Count != 0 ? pckt.Data[0].ToString() : "null";
+        //    // Print out messages
+        //    Debug.Log("Input port: " + serverPort.ToString() + "\nAddress: " + address + "\nData [0]: " + data0);
+        //}
     }
 }

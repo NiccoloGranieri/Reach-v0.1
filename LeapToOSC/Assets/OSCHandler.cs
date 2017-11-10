@@ -95,8 +95,8 @@ public class OSCHandler : MonoBehaviour
 	public void Init()
 	{
         //Initialize OSC clients (transmitters)
-        //Example:		
-        //CreateClient("SuperCollider", IPAddress.Parse("127.0.0.1"), 5555);
+        //PureData:		
+        //CreateClient("PureData", IPAddress.Parse("127.0.0.1"), 8765);
 
         //Initialize OSC servers (listeners)
         //Example:
@@ -284,7 +284,9 @@ public class OSCHandler : MonoBehaviour
 		}
 		else
 		{
-			Debug.LogError(string.Format("Can't send OSC messages to {0}. Client doesn't exist.", clientId));
+
+            // Hiding Debug Error that showed up when app was not running.
+			// Debug.LogError(string.Format("Can't send OSC messages to {0}. Client doesn't exist.", clientId));
 		}
 	}
 	
