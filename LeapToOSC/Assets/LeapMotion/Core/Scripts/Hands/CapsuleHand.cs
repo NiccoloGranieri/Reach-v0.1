@@ -15,7 +15,7 @@ using Leap.Unity.Attributes;
 namespace Leap.Unity {
   /** A basic Leap hand model constructed dynamically vs. using pre-existing geometry*/
   public class CapsuleHand : IHandModel {
-
+    
     private const int TOTAL_JOINT_COUNT = 4 * 5;
     private const float CYLINDER_MESH_RESOLUTION = 0.1f; //in centimeters, meshes within this resolution will be re-used
     private const int THUMB_BASE_INDEX = (int)Finger.FingerType.TYPE_THUMB * 4;
@@ -37,12 +37,12 @@ namespace Leap.Unity {
     string pinkyStr = "/pinky";
     string palmStr = "/palm";
     string wristStr = "/wrist";
-
-        [SerializeField]
+    
+    [SerializeField]
     public Chirality handedness;
 
     [SerializeField]
-    private bool _showArm = true;
+    private bool _showArm = false;
 
     [SerializeField]
     private Material _material;
@@ -137,9 +137,10 @@ namespace Leap.Unity {
                         OSCHandler.Instance.SendMessageToClient("myClient", "/" + fingerName[(int)finger.Type] + jointKind[joint] + "/z", position.z);
                     }
 
-                    drawSphere(position);
-
-
+                    if (changeState.Toggle)
+                    {
+                        drawSphere(position);
+                    }
 
                 }
       }
@@ -148,14 +149,21 @@ namespace Leap.Unity {
       //PalmPos, WristPos, and mockThumbJointPos, which is derived and not taken from the frame obj
 
       Vector3 palmPosition = _hand.PalmPosition.ToVector3();
-      drawSphere(palmPosition, PALM_RADIUS);
+      
 
       Vector3 wristPos = _hand.WristPosition.ToVector3();
-      drawSphere(wristPos);
+      
 
       Vector3 thumbBaseToPalm = _spherePositions[THUMB_BASE_INDEX] - _hand.PalmPosition.ToVector3();
       Vector3 mockThumbJointPos = _hand.PalmPosition.ToVector3() + Vector3.Reflect(thumbBaseToPalm, _hand.Basis.xBasis.ToVector3());
-      drawSphere(mockThumbJointPos);
+
+            if (changeState.Toggle)
+            {
+                drawSphere(wristPos);
+                drawSphere(palmPosition, PALM_RADIUS);
+                drawSphere(mockThumbJointPos);
+            }
+            
       
       OSCHandler.Instance.SendMessageToClient("myClient", "/" + handedness + palmStr + "/x", palmPosition.x);
       OSCHandler.Instance.SendMessageToClient("myClient", "/" + handedness + palmStr + "/y", palmPosition.y);
@@ -191,33 +199,40 @@ namespace Leap.Unity {
         drawCylinder(armFrontRight, armBackRight);
       }
 
-      //Draw cylinders between finger joints
-      for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 3; j++) {
-          int keyA = getFingerJointIndex(i, j);
-          int keyB = getFingerJointIndex(i, j + 1);
+            //Draw cylinders between finger joints
 
-          Vector3 posA = _spherePositions[keyA];
-          Vector3 posB = _spherePositions[keyB];
+            if (changeState.Toggle)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        int keyA = getFingerJointIndex(i, j);
+                        int keyB = getFingerJointIndex(i, j + 1);
 
-          drawCylinder(posA, posB);
-        }
-      }
+                        Vector3 posA = _spherePositions[keyA];
+                        Vector3 posB = _spherePositions[keyB];
 
-      //Draw cylinders between finger knuckles
-      for (int i = 0; i < 4; i++) {
-        int keyA = getFingerJointIndex(i, 0);
-        int keyB = getFingerJointIndex(i + 1, 0); 
+                        drawCylinder(posA, posB);
+                    }
+                }
 
-        Vector3 posA = _spherePositions[keyA];
-        Vector3 posB = _spherePositions[keyB];
+                //Draw cylinders between finger knuckles
+                for (int i = 0; i < 4; i++)
+                {
+                    int keyA = getFingerJointIndex(i, 0);
+                    int keyB = getFingerJointIndex(i + 1, 0);
 
-        drawCylinder(posA, posB);
-       }
+                    Vector3 posA = _spherePositions[keyA];
+                    Vector3 posB = _spherePositions[keyB];
 
-      //Draw the rest of the hand
-      drawCylinder(mockThumbJointPos, THUMB_BASE_INDEX);
-      drawCylinder(mockThumbJointPos, PINKY_BASE_INDEX);
+                    drawCylinder(posA, posB);
+                }
+
+                //Draw the rest of the hand
+                drawCylinder(mockThumbJointPos, THUMB_BASE_INDEX);
+                drawCylinder(mockThumbJointPos, PINKY_BASE_INDEX);
+            }
     }
 
     private void drawSphere(Vector3 position, float radius = SPHERE_RADIUS) {

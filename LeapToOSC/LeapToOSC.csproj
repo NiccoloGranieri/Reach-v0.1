@@ -222,6 +222,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\backgroundChange.cs" />
+    <Compile Include="Assets\changeState.cs" />
     <Compile Include="Assets\LeapMotion\Core\Scripts\Algorithms\SlidingMax.cs" />
     <Compile Include="Assets\LeapMotion\Core\Scripts\Algorithms\SmoothedFloat.cs" />
     <Compile Include="Assets\LeapMotion\Core\Scripts\Algorithms\SmoothedQuaternion.cs" />

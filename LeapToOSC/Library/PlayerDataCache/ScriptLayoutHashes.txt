@@ -173,7 +173,7 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-f056a872c6864873b73a6a3ca94d33d2 Assembly-CSharp.dll:.oscControl
+f056a872c6864873b73a6a3ca94d33d2 Assembly-CSharp.dll:Leap.Unity.oscControl
 ac78702352b23eea116ae8cd263cafbf Assembly-CSharp.dll:Leap.Unity.ExtendedFingerDetector
 be68a326f522e456f6b5554c6b068fd4 Assembly-CSharp.dll:Leap.Unity.Comment
 540ce0f341c4ebabefbd0b62fa3f2693 Assembly-CSharp.dll:Leap.Unity.SkeletalHand
@@ -183,3 +183,5 @@ be68a326f522e456f6b5554c6b068fd4 Assembly-CSharp.dll:Leap.Unity.Comment
 4fdae900abf29ef9860818aa945aab1c Assembly-CSharp.dll:Leap.Unity.DetectorLogicGate
 6daf822fbfefbf0e5841375a5f907196 Assembly-CSharp.dll:Leap.Unity.KeyEnableBehaviors
 d8b86f4fb9fa4c153334062c4f5a4a1d Assembly-CSharp.dll:Leap.Unity.StationaryTestLeapProvider
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.changeState
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.backgroundChange
