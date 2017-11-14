@@ -1,12 +1,5 @@
-# Folders to ignore
-LeapToOSC/Temp
-
-# Files to ignore
-.DS_Store
-
-# Unity standard ignores
 /[Ll]ibrary/
-/[Tt]emp/
+LeapToOSC/[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
