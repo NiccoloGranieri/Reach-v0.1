@@ -1,4 +1,4 @@
-#N canvas 47 10 1112 295 10;
+#N canvas 47 50 1112 295 10;
 #X obj 6 8 inlet;
 #X floatatom 6 108 5 0 0 0 - - -, f 5;
 #X floatatom 60 108 5 0 0 0 - - -, f 5;
@@ -90,6 +90,7 @@
 #X obj 1039 184 route x;
 #X obj 1039 84 route joint;
 #X obj 6 32 route Right;
+#X obj 3 274 outlet;
 #X connect 0 0 90 0;
 #X connect 3 0 2 0;
 #X connect 4 0 5 0;
@@ -97,6 +98,7 @@
 #X connect 6 0 3 0;
 #X connect 6 0 4 0;
 #X connect 7 0 1 0;
+#X connect 8 0 91 0;
 #X connect 10 0 9 0;
 #X connect 11 0 12 0;
 #X connect 13 0 8 0;
