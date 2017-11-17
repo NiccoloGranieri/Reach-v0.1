@@ -32,3 +32,9 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Single Files
+
+Pd/PiSh_LM.pd
+Pd/PitchShifterEffect.pd
+Pd/line_mul~.pd
