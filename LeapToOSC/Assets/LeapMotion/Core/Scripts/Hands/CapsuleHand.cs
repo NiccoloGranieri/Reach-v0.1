@@ -15,7 +15,46 @@ using Leap.Unity.Attributes;
 namespace Leap.Unity {
   /** A basic Leap hand model constructed dynamically vs. using pre-existing geometry*/
   public class CapsuleHand : IHandModel {
-    
+
+    public Vector3 getPalmPosition()
+    {
+            return _hand.PalmPosition.ToVector3();
+    }
+
+    public Vector3 getWristPosition()
+    {
+            return _hand.WristPosition.ToVector3();
+    }
+
+    public List<Vector3> getFingerPosition()
+    {
+        List<Vector3> jointsArray = new List<Vector3>();
+
+        foreach (var finger in _hand.Fingers)
+        {
+            for (int joint = 0; joint < 4; joint++)
+            {
+                int key = getFingerJointIndex((int)finger.Type, joint);
+
+                Vector3 position = finger.Bone((Bone.BoneType)joint).NextJoint.ToVector3();
+                _spherePositions[key] = position;
+
+                if (joint <= 1)
+                {
+                    jointsArray.Add(position);
+                }
+            }
+
+        }
+        return jointsArray;
+    }
+
+        string thumbStr = "/thumb";
+        string indexStr = "/index";
+        string middleStr = "/middle";
+        string ringStr = "/ring";
+        string pinkyStr = "/pinky";
+
     private const int TOTAL_JOINT_COUNT = 4 * 5;
     private const float CYLINDER_MESH_RESOLUTION = 0.1f; //in centimeters, meshes within this resolution will be re-used
     private const int THUMB_BASE_INDEX = (int)Finger.FingerType.TYPE_THUMB * 4;
@@ -29,14 +68,6 @@ namespace Leap.Unity {
     private static int _rightColorIndex = 0;
     private static Color[] _leftColorList = { new Color(0.0f, 0.0f, 1.0f), new Color(0.2f, 0.0f, 0.4f), new Color(0.0f, 0.2f, 0.2f) };
     private static Color[] _rightColorList = { new Color(1.0f, 0.0f, 0.0f), new Color(1.0f, 1.0f, 0.0f), new Color(1.0f, 0.5f, 0.0f) };
-
-    string thumbStr = "/thumb";
-    string indexStr = "/index";   
-    string middleStr = "/middle";
-    string ringStr = "/ring";
-    string pinkyStr = "/pinky";
-    string palmStr = "/palm";
-    string wristStr = "/wrist";
     
     [SerializeField]
     public Chirality handedness;
@@ -106,6 +137,7 @@ namespace Leap.Unity {
       }
     }
 
+
         public override void UpdateHand() {
 
             if (_spherePositions == null || _spherePositions.Length != TOTAL_JOINT_COUNT) {
@@ -117,8 +149,10 @@ namespace Leap.Unity {
                 _sphereMat.hideFlags = HideFlags.DontSaveInEditor;
             }
 
-            string[] fingerName = {handedness + thumbStr, handedness + indexStr, handedness + middleStr, handedness + ringStr, handedness + pinkyStr };
-            string[] jointKind = {"/knuckle", "/joint"};
+
+
+
+
 
             //Update all joint spheres in the fingers
             foreach (var finger in _hand.Fingers) {
@@ -132,9 +166,10 @@ namespace Leap.Unity {
 
                     if (joint <= 1)
                     {
-                        OSCHandler.Instance.SendMessageToClient("myClient", "/" + fingerName[(int)finger.Type] + jointKind[joint] + "/x", position.x);
-                        OSCHandler.Instance.SendMessageToClient("myClient", "/" + fingerName[(int)finger.Type] + jointKind[joint] + "/y", position.y);
-                        OSCHandler.Instance.SendMessageToClient("myClient", "/" + fingerName[(int)finger.Type] + jointKind[joint] + "/z", position.z);
+
+                        //OSCHandler.Instance.SendMessageToClient("myClient", "/" + fingerName[(int)finger.Type] + jointKind[joint] + "/x", position.x);
+                        //OSCHandler.Instance.SendMessageToClient("myClient", "/" + fingerName[(int)finger.Type] + jointKind[joint] + "/y", position.y);
+                        //OSCHandler.Instance.SendMessageToClient("myClient", "/" + fingerName[(int)finger.Type] + jointKind[joint] + "/z", position.z);
                     }
 
                     if (changeState.Toggle)
@@ -163,15 +198,14 @@ namespace Leap.Unity {
                 drawSphere(palmPosition, PALM_RADIUS);
                 drawSphere(mockThumbJointPos);
             }
-            
       
-      OSCHandler.Instance.SendMessageToClient("myClient", "/" + handedness + palmStr + "/x", palmPosition.x);
-      OSCHandler.Instance.SendMessageToClient("myClient", "/" + handedness + palmStr + "/y", palmPosition.y);
-      OSCHandler.Instance.SendMessageToClient("myClient", "/" + handedness + palmStr + "/z", palmPosition.z);
+      //OSCHandler.Instance.SendMessageToClient("myClient", "/" + handedness + palmStr + "/x", palmPosition.x);
+      //OSCHandler.Instance.SendMessageToClient("myClient", "/" + handedness + palmStr + "/y", palmPosition.y);
+      //OSCHandler.Instance.SendMessageToClient("myClient", "/" + handedness + palmStr + "/z", palmPosition.z);
        
-      OSCHandler.Instance.SendMessageToClient("myClient", "/" + handedness + wristStr + "/x", wristPos.x);
-      OSCHandler.Instance.SendMessageToClient("myClient", "/" + handedness + wristStr + "/y", wristPos.y);
-      OSCHandler.Instance.SendMessageToClient("myClient", "/" + handedness + wristStr + "/z", wristPos.z);
+      //OSCHandler.Instance.SendMessageToClient("myClient", "/" + handedness + wristStr + "/x", wristPos.x);
+      //OSCHandler.Instance.SendMessageToClient("myClient", "/" + handedness + wristStr + "/y", wristPos.y);
+      //OSCHandler.Instance.SendMessageToClient("myClient", "/" + handedness + wristStr + "/z", wristPos.z);
 
       //If we want to show the arm, do the calculations and display the meshes
       if (_showArm) {
