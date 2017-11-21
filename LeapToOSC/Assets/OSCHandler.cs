@@ -68,10 +68,11 @@ public class OSCHandler : MonoBehaviour
 	{
 	    get 
 		{
+
 	        if (_instance == null) 
 			{
-				_instance = new GameObject ("OSCHandler").AddComponent<OSCHandler>();
-	        }
+                _instance = new GameObject("OSCHandler").AddComponent<OSCHandler>();
+            }
 	       
 	        return _instance;
 	    }
@@ -96,8 +97,8 @@ public class OSCHandler : MonoBehaviour
 	{
         //Initialize OSC clients (transmitters)
         //PureData:		
-        //CreateClient("PureData", IPAddress.Parse("127.0.0.1"), 8765);
-
+        // CreateClient("PureData", IPAddress.Parse("127.0.0.1"), 8765);
+        CreateClient("myClient", IPAddress.Parse("127.0.0.1"), 8765);
         //Initialize OSC servers (listeners)
         //Example:
 
