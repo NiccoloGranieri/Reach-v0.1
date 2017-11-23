@@ -48,12 +48,13 @@ namespace Leap.Unity {
         }
         return jointsArray;
     }
-
+        /*
         string thumbStr = "/thumb";
         string indexStr = "/index";
         string middleStr = "/middle";
         string ringStr = "/ring";
         string pinkyStr = "/pinky";
+        */
 
     private const int TOTAL_JOINT_COUNT = 4 * 5;
     private const float CYLINDER_MESH_RESOLUTION = 0.1f; //in centimeters, meshes within this resolution will be re-used
