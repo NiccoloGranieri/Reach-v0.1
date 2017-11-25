@@ -39,22 +39,13 @@ namespace Leap.Unity {
                 Vector3 position = finger.Bone((Bone.BoneType)joint).NextJoint.ToVector3();
                 _spherePositions[key] = position;
 
-                if (joint <= 1)
-                {
-                    jointsArray.Add(position);
-                }
+                jointsArray.Add(position);
+                
             }
 
         }
         return jointsArray;
     }
-        /*
-        string thumbStr = "/thumb";
-        string indexStr = "/index";
-        string middleStr = "/middle";
-        string ringStr = "/ring";
-        string pinkyStr = "/pinky";
-        */
 
     private const int TOTAL_JOINT_COUNT = 4 * 5;
     private const float CYLINDER_MESH_RESOLUTION = 0.1f; //in centimeters, meshes within this resolution will be re-used
