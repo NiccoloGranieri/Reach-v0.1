@@ -24,16 +24,14 @@ using System;
 using System.Net;
 using System.Collections;
 using System.Collections.Generic;
-//using System.Text;
-using UnityOSC;
 
 namespace Leap.Unity
 {
     public class oscControl : MonoBehaviour
     {
-        public GameObject hands;
-        public GameObject leftHand;
-        public GameObject rightHand;
+        private GameObject hands;
+        private GameObject leftHand;
+        private GameObject rightHand;
 
         static string thumbStr = "/thumb";
         static string indexStr = "/index";
@@ -53,7 +51,6 @@ namespace Leap.Unity
         // Buffer size of the application (stores 100 messages from different servers)
         //public int bufferSize = 100;
 
-        // Script initialization
         void Start()
         {
             // init OSC
@@ -61,21 +58,11 @@ namespace Leap.Unity
             leftHand = hands.transform.Find("CapsuleHand_L").gameObject;
             rightHand = hands.transform.Find("CapsuleHand_R").gameObject;
 
-            OSCHandler.Instance.Init();
             // Initialize OSC clients (transmitters)
-
-
-            // Initialize OSC servers (listeners)
-            //myServer = OSCHandler.Instance.CreateServer("myServer", inPort);
-            // Set buffer size (bytes) of the server (default 1024)
-            //myServer.ReceiveBufferSize = 1024;
-            // Set the sleeping time of the thread (default 10)
-            //myServer.SleepMilliseconds = 10;
-
+            OSCHandler.Instance.Init();
         }
 
-        // Reads all the messages received between the previous update and this one
-        void Update() // Empty, (commented) OSC Message Reader
+        void Update()
         {
             if (leftHand.gameObject.activeSelf == true)
             {
@@ -137,31 +124,9 @@ namespace Leap.Unity
                 OSCHandler.Instance.SendMessageToClient("myClient", "/" + handedness + wristStr + "/z", wristPosition.z);
 
             }
-            
-            // Read received messages
-            //for (var i = 0; i < OSCHandler.Instance.packets.Count; i++)
-            //{
-            //    // Process OSC
-            //    receivedOSC(OSCHandler.Instance.packets[i]);
-            //    // Remove them once they have been read.
-            //    OSCHandler.Instance.packets.Remove(OSCHandler.Instance.packets[i]);
-            //    i--;
-            //}
 
         }
 
-        // Process incoming OSC messages (Commented)
-        //private void receivedOSC(OSCPacket pckt)
-        //{
-        //    if (pckt == null) { Debug.Log("Empty packet"); return;
-        //    // Origin
-        //    int serverPort = pckt.server.ServerPort;
-        //    // Address
-        //    string address = pckt.Address.Substring(1);
-        //    // Data at index 0
-        //    string data0 = pckt.Data.Count != 0 ? pckt.Data[0].ToString() : "null";
-        //    // Print out messages
-        //    Debug.Log("Input port: " + serverPort.ToString() + "\nAddress: " + address + "\nData [0]: " + data0);
-        //}
     }
+
 }
