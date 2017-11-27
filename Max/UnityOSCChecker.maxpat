@@ -38,12 +38,13 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"bgcolor" : [ 0.848164, 0.786889, 0.529305, 0.99 ],
 					"id" : "obj-11",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 151.0, 33.5, 261.0, 47.0 ],
+					"patching_rect" : [ 151.0, 33.5, 264.0, 47.0 ],
 					"style" : "",
 					"text" : "In order to handle OSC data without installing any externals, I use regexp to substitute \"/\" with a space, and use route to parse the message."
 				}
