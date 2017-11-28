@@ -39,6 +39,10 @@ Pd/PiSh_LM.pd
 Pd/PitchShifterEffect.pd
 Pd/line_mul~.pd
 
+# Release Folder
+
+Release/
+
 # MacOS Specific
 
 .DS_Store
