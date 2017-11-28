@@ -1,0 +1,3 @@
+[submodule "LeapToOSC/Assets/LeapMotion"]
+	path = LeapToOSC/Assets/LeapMotion
+	url = https://github.com/leapmotion/UnityModules
