@@ -36,6 +36,8 @@ namespace Leap.Unity {
             {
                 int key = getFingerJointIndex((int)finger.Type, joint);
 
+                    Debug.Log(key);
+
                 Vector3 position = finger.Bone((Bone.BoneType)joint).NextJoint.ToVector3();
                 _spherePositions[key] = position;
 
@@ -131,7 +133,6 @@ namespace Leap.Unity {
 
 
         public override void UpdateHand() {
-
             if (_spherePositions == null || _spherePositions.Length != TOTAL_JOINT_COUNT) {
                 _spherePositions = new Vector3[TOTAL_JOINT_COUNT];
             }
