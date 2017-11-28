@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/LeapMotion Desktop OSC.unity
+    guid: ddce5a73513939c4fb26a4ed551ff537
+  - enabled: 1
+    path: Assets/Scenes/LeapMotion VR OSC.unity
+    guid: d586a7c9acfb5554d90f8960c387c2be
