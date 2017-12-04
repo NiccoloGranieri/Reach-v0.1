@@ -1,4 +1,4 @@
-# Orion OSC - Leap Motion OSC Sender  
+# Reach - Leap Motion OSC Sender
 
 Reach is a free and open source application, written using [Unity](https://unity3d.com) and [UnityOSC](https://github.com/jorgegarcia/UnityOSC), to map [Leap Motion](https://leapmotion.com) data to OSC messages. Using the latest Leap Motion SDK [Orion](https://developer.leapmotion.com/orion/) this app
 enables easy mapping of leap motion parameters in any other environment without having to code a single line.
