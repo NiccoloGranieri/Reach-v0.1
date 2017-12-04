@@ -1,16 +1,16 @@
 # Orion OSC - Leap Motion OSC Sender  
 
-Orion OSC is a free and open source application, written using [Unity](https://unity3d.com) and [UnityOSC](https://github.com/jorgegarcia/UnityOSC), to map [Leap Motion](https://leapmotion.com) data to OSC messages. Using the latest Leap Motion SDK [Orion](https://developer.leapmotion.com/orion/) this app
+Reach is a free and open source application, written using [Unity](https://unity3d.com) and [UnityOSC](https://github.com/jorgegarcia/UnityOSC), to map [Leap Motion](https://leapmotion.com) data to OSC messages. Using the latest Leap Motion SDK [Orion](https://developer.leapmotion.com/orion/) this app
 enables easy mapping of leap motion parameters in any other environment without having to code a single line.
 
-### [**Web Page**](http://niccologranieri.com/orion-osc) - [**DOWNLOAD**](https://sourceforge.net/projects/orionosc/files/OrionOSC_0.1.0-alpha/)
+### [**Web Page**](http://niccologranieri.com/reach/) - [**DOWNLOAD**](https://sourceforge.net/projects/reach/files/OrionOSC_0.1.0-alpha/)
 
 ## Key Features
 - OSC mapping of hand nodes' spatial position (x, y, z)
 
 ## Acknowledgements
 
-Orion OSC is a software supported by [Integra Lab](http://integra.io).
+Reach is a software supported by [Integra Lab](http://integra.io).
 
 ### Team:
 - [Niccolò Granieri](http://niccologranieri.com), creator
