@@ -5,11 +5,11 @@
 			"major" : 7,
 			"minor" : 3,
 			"revision" : 4,
-			"architecture" : "x86",
+			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 2023.0, 296.0, 442.0, 198.0 ],
+		"rect" : [ 964.0, 296.0, 442.0, 198.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -124,7 +124,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 7.0, 8.0, 99.0, 22.0 ],
 					"style" : "",
-					"text" : "udpreceive 5432"
+					"text" : "udpreceive 8765"
 				}
 
 			}
@@ -170,14 +170,14 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "Right_Hand.maxpat",
-				"bootpath" : "~/OrionOSC/Max",
+				"bootpath" : "~/Reach/Max",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "Left_Hand.maxpat",
-				"bootpath" : "~/OrionOSC/Max",
+				"bootpath" : "~/Reach/Max",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
