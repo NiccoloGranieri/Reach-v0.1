@@ -37,13 +37,8 @@ namespace Leap.Unity
 
         string[] jointName = { "/knuckle", "/joint1", "/joint2", "/joint3" };
 
-        //private OSCServer myServer;
-
-            //public string outIP = "127.0.0.1";
-            //public int outPort = 8765;
-            //public int inPort = 5678;
-            // Buffer size of the application (stores 100 messages from different servers)
-            //public int bufferSize = 100;
+        float interval = 0.5f;
+        float nextTime = 0.0f;
 
         void Start()
         {
@@ -56,71 +51,94 @@ namespace Leap.Unity
 
         void Update()
         {
+            int[] presenceL = new int[2] { 0, 0 };
+            int[] presenceR = new int[2] { 0, 0 };
+
             var currentFrame = leapScript.CurrentFrame;
-            if (currentFrame.Hands.Count > 0)
+
+            if (Time.time >= nextTime)
             {
-                var numLeftHands = 0;
-                var numRightHands = 0;
-
-                hands = currentFrame.Hands;
-
-                foreach (var hand in hands)
+                if (currentFrame.Hands.Count > 0)
                 {
-                    if (hand.IsLeft)
+                    var numLeftHands = 0;
+                    var numRightHands = 0;
+
+                    hands = currentFrame.Hands;
+
+                    foreach (var hand in hands)
                     {
-                        ++numLeftHands;
-
-                        OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + palmStr + "/x", hand.PalmPosition.x);
-                        OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + palmStr + "/y", hand.PalmPosition.y);
-                        OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + palmStr + "/z", hand.PalmPosition.z);
-
-                        OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + wristStr + "/x", hand.WristPosition.x);
-                        OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + wristStr + "/y", hand.WristPosition.y);
-                        OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + wristStr + "/z", hand.WristPosition.z);
-
-                        foreach (var finger in hand.Fingers)
+                        if (hand.IsLeft)
                         {
-                            for (int joint = 0; joint < 4; joint++)
+                            ++numLeftHands;
+
+                            presenceL[numLeftHands - 1] = 1;
+
+                            OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + palmStr + "/x", hand.PalmPosition.x);
+                            OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + palmStr + "/y", hand.PalmPosition.y);
+                            OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + palmStr + "/z", hand.PalmPosition.z);
+
+                            /*
+                            OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + wristStr + "/x", hand.WristPosition.x);
+                            OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + wristStr + "/y", hand.WristPosition.y);
+                            OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + wristStr + "/z", hand.WristPosition.z);
+
+                            foreach (var finger in hand.Fingers)
                             {
-                                Vector3 fingerPositions = finger.Bone((Bone.BoneType)joint).NextJoint.ToVector3();
+                                for (int joint = 0; joint < 4; joint++)
+                                {
+                                    Vector3 fingerPositions = finger.Bone((Bone.BoneType)joint).NextJoint.ToVector3();
 
-                                String thisJoint = jointName[joint];
+                                    String thisJoint = jointName[joint];
 
-                                OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + "/" + finger.Type + thisJoint + "/x", fingerPositions.x);
-                                OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + "/" + finger.Type + thisJoint + "/y", fingerPositions.y);
-                                OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + "/" + finger.Type + thisJoint + "/z", fingerPositions.z);
+                                    OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + "/" + finger.Type + thisJoint + "/x", fingerPositions.x);
+                                    OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + "/" + finger.Type + thisJoint + "/y", fingerPositions.y);
+                                    OSCHandler.Instance.SendMessageToClient("myClient", "/Left" + numLeftHands + "/" + finger.Type + thisJoint + "/z", fingerPositions.z);
+                                }
                             }
+                            */
                         }
-                    }
-                    
-                    if (hand.IsRight)
-                    {
-                        ++numRightHands;
 
-                        OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + palmStr + "/x", hand.PalmPosition.x);
-                        OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + palmStr + "/y", hand.PalmPosition.y);
-                        OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + palmStr + "/z", hand.PalmPosition.z);
-
-                        OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + wristStr + "/x", hand.WristPosition.x);
-                        OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + wristStr + "/y", hand.WristPosition.y);
-                        OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + wristStr + "/z", hand.WristPosition.z);
-
-                        foreach (var finger in hand.Fingers)
+                        if (hand.IsRight)
                         {
-                            for (int joint = 0; joint < 4; joint++)
+                            ++numRightHands;
+
+                            presenceR[numRightHands - 1] = 1;
+
+                            OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + palmStr + "/x", hand.PalmPosition.x);
+                            OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + palmStr + "/y", hand.PalmPosition.y);
+                            OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + palmStr + "/z", hand.PalmPosition.z);
+
+                            /*
+                            OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + wristStr + "/x", hand.WristPosition.x);
+                            OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + wristStr + "/y", hand.WristPosition.y);
+                            OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + wristStr + "/z", hand.WristPosition.z);
+
+                            foreach (var finger in hand.Fingers)
                             {
-                                Vector3 fingerPositions = finger.Bone((Bone.BoneType)joint).NextJoint.ToVector3();
+                                for (int joint = 0; joint < 4; joint++)
+                                {
+                                    Vector3 fingerPositions = finger.Bone((Bone.BoneType)joint).NextJoint.ToVector3();
 
-                                String thisJoint = jointName[joint];
+                                    String thisJoint = jointName[joint];
 
-                                OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + "/" + finger.Type + thisJoint + "/x", fingerPositions.x);
-                                OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + "/" + finger.Type + thisJoint + "/y", fingerPositions.y);
-                                OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + "/" + finger.Type + thisJoint + "/z", fingerPositions.z);
+                                    OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + "/" + finger.Type + thisJoint + "/x", fingerPositions.x);
+                                    OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + "/" + finger.Type + thisJoint + "/y", fingerPositions.y);
+                                    OSCHandler.Instance.SendMessageToClient("myClient", "/Right" + numRightHands + "/" + finger.Type + thisJoint + "/z", fingerPositions.z);
+                                }
                             }
+                            */
                         }
-                    }
-                }           // Hands for loop
-            }               // if Hands > 0
+                    }           // Hands for loop
+                }               // if Hands > 0
+
+                OSCHandler.Instance.SendMessageToClient("myClient", "/Left1/presence", presenceL[0]);
+                OSCHandler.Instance.SendMessageToClient("myClient", "/Left2/presence", presenceL[1]);
+                OSCHandler.Instance.SendMessageToClient("myClient", "/Right1/presence", presenceR[0]);
+                OSCHandler.Instance.SendMessageToClient("myClient", "/Right2/presence", presenceR[1]);
+
+                nextTime += interval;
+
+            }                   // if Time
         }                   // Update()
     }
 }                           // Namespace
